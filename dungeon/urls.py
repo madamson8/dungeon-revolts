@@ -16,11 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
-from game.views import CharacterViewSet
+from game.views import *
 
 router = routers.DefaultRouter()
 router.register(r'characters', CharacterViewSet)
-
+router.register(r'levels', LevelViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

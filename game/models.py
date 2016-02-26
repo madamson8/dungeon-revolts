@@ -8,6 +8,9 @@ class Level(models.Model):
     character = models.ForeignKey('Character', related_name='levels')
     depth = models.PositiveSmallIntegerField(default=0)
 
+    def __str__(self):
+        return "{}: {} ({})".format(self.depth, self.name, self.depth)
+
 
 class AbstractLocation(models.Model):
     current_level = models.ForeignKey(
@@ -35,6 +38,10 @@ class Character(AbstractLocation):
     #Sin count
     sin_level = models.SmallIntegerField(default=0, blank=True, null=True)
 
+    def __str__(self):
+        return "{} ({})".format(self.name, self.user)
+
+
 
 class CreatureType(models.Model):
     name = models.CharField(max_length=32)
@@ -43,10 +50,19 @@ class CreatureType(models.Model):
     enemy_aggro = models.BooleanField(default=True)
     symbol = models.CharField(max_length=1)
 
+    def __str__(self):
+        return "{} ({})".format(self.name, self.symbol)
+
 
 class Creature(AbstractLocation):
     type = models.ForeignKey('CreatureType')
     current_hp = models.PositiveIntegerField()
+
+    def __str__(self):
+        char_name = ""
+        if self.current_level:
+            char_name = self.current_level.character
+        return "{} ({})".format(self.type, char_name)
 
 
 class ItemType(models.Model):
@@ -56,6 +72,9 @@ class ItemType(models.Model):
     damage = models.IntegerField(default=0)
     durability = models.IntegerField(default=30)
     consumable = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "{}".format(self.name)
 
 
 class Item(AbstractLocation):
@@ -68,3 +87,10 @@ class TileType(models.Model):
     damage = models.IntegerField(default=0)
     is_solid = models.BooleanField(default=True)
     floor = models.BooleanField(default=True)
+
+    def __str__(self):
+        char_name = ""
+        if self.current_level:
+            char_name = self.current_level.character
+        return "{} {}".format(self.type, char_name)
+
