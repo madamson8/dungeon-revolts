@@ -42,7 +42,6 @@ class Character(AbstractLocation):
         return "{} ({})".format(self.name, self.user)
 
 
-
 class CreatureType(models.Model):
     name = models.CharField(max_length=32)
     base_hp = models.PositiveIntegerField(default=500)

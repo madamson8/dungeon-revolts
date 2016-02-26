@@ -21,6 +21,11 @@ from game.views import *
 router = routers.DefaultRouter()
 router.register(r'characters', CharacterViewSet)
 router.register(r'levels', LevelViewSet)
+router.register(r'Item', ItemViewSet)
+router.register(r'item-type', ItemTypeViewSet)
+router.register(r'creature', CreatureViewSet)
+router.register(r'creature-type', CreatureTypeViewSet)
+router.register(r'tile-type', TileTypeViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
