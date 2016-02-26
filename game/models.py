@@ -32,6 +32,9 @@ class Character(AbstractLocation):
     max_food = models.PositiveIntegerField(default=30)
     current_food = models.IntegerField(default=30)
 
+    #Sin count
+    sin_level = models.SmallIntegerField(default=0, blank=True, null=True)
+
 
 class CreatureType(models.Model):
     name = models.CharField(max_length=32)
@@ -48,6 +51,7 @@ class Creature(AbstractLocation):
 
 class ItemType(models.Model):
     name = models.CharField(max_length=32)
+    description = models.TextField(default='description')
     health = models.IntegerField(default=0)
     damage = models.IntegerField(default=0)
     durability = models.IntegerField(default=30)
