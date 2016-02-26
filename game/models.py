@@ -38,6 +38,7 @@ class CreatureType(models.Model):
     base_hp = models.PositiveIntegerField(default=500)
     enemy_damage = models.SmallIntegerField(default=0)
     enemy_aggro = models.BooleanField(default=True)
+    symbol = models.CharField(max_length=1)
 
 
 class Creature(AbstractLocation):
