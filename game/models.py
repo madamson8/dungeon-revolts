@@ -10,7 +10,8 @@ class Level(models.Model):
 
 
 class AbstractLocation(models.Model):
-    current_level = models.ForeignKey('Level', related_name='+')
+    current_level = models.ForeignKey(
+        'Level', related_name='+', blank=True, null=True)
     x = models.PositiveSmallIntegerField()
     y = models.PositiveSmallIntegerField()
 
@@ -35,8 +36,23 @@ class Character(AbstractLocation):
 class CreatureType(models.Model):
     name = models.CharField(max_length=32)
     base_hp = models.PositiveIntegerField(default=500)
+    enemy_damage = models.SmallIntegerField(default=0)
+    enemy_aggro = models.BooleanField(default=True)
 
 
 class Creature(AbstractLocation):
-    creature = models.ForeignKey('CreatureType')
+    type = models.ForeignKey('CreatureType')
     current_hp = models.PositiveIntegerField()
+
+
+class ItemType(models.Model):
+    name = models.CharField(max_length=32)
+    health = models.IntegerField(default=0)
+    damage = models.IntegerField(default=0)
+    durability = models.IntegerField(default=30)
+    consumable = models.BooleanField(default=False)
+
+
+class Item(AbstractLocation):
+    type = models.ForeignKey('ItemType')
+    current_durability = models.PositiveIntegerField()
