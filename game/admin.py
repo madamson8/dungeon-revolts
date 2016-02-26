@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from game.models import Character, Level, CreatureType, Creature, ItemType, Item
+from game.models import Character, Level, CreatureType, Creature, ItemType, Item, \
+    TileType
 
 
 class CharacterAdmin(admin.ModelAdmin):
@@ -31,3 +32,8 @@ admin.site.register(ItemType, ItemTypeAdmin)
 class ItemAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Item, ItemAdmin)
+
+
+class TyleTypeAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(TileType, TyleTypeAdmin)

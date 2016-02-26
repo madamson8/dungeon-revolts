@@ -56,3 +56,10 @@ class ItemType(models.Model):
 class Item(AbstractLocation):
     type = models.ForeignKey('ItemType')
     current_durability = models.PositiveIntegerField()
+
+
+class TileType(models.Model):
+    name = models.CharField(max_length=16)
+    damage = models.IntegerField(default=0)
+    is_solid = models.BooleanField(default=True)
+    floor = models.BooleanField(default=True)
