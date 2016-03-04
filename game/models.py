@@ -8,13 +8,21 @@ class Level(models.Model):
     character = models.ForeignKey('Character', related_name='levels')
     depth = models.PositiveSmallIntegerField(default=0)
 
+    @property
+    def width(self):
+        return len(self.tiles.strip("\n").split("\n")[0])
+
+    @property
+    def height(self):
+        return len(self.tiles.strip("\n").split("\n"))
+
     def __str__(self):
         return "{}: {} ({})".format(self.depth, self.name, self.depth)
 
 
 class AbstractLocation(models.Model):
     current_level = models.ForeignKey(
-        'Level', related_name='+', blank=True, null=True)
+        'Level', related_name='+', blank=True, null=True, on_delete=models.SET_NULL)
     x = models.PositiveSmallIntegerField()
     y = models.PositiveSmallIntegerField()
 
@@ -35,7 +43,7 @@ class Character(AbstractLocation):
     max_food = models.PositiveIntegerField(default=30)
     current_food = models.IntegerField(default=30)
 
-    #Sin count
+    # Sin count
     sin_level = models.SmallIntegerField(default=0, blank=True, null=True)
 
     def __str__(self):
