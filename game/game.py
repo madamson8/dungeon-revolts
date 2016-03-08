@@ -53,6 +53,8 @@ def execute_move(character, command):
     # If the character is dead, don't accept commands
     if character.current_hp <= 0:
         raise ValidationError("You are dead!")
+    if not character.current_level:
+        generate_level(character)
 
     command = command.split(" ")
     if command[0] == "move":
