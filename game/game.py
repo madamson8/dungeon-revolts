@@ -1,6 +1,8 @@
+import random
+
 from rest_framework.exceptions import ValidationError
 
-from game.models import Character, Level
+from game.models import Character, Level, Creature, CreatureType
 
 
 def draw_board(character: Character):
@@ -20,10 +22,15 @@ def draw_board(character: Character):
     # Where is the character on this level?
     set_character(character.x, character.y, "@")
 
+    # For each creature in the level, set it.
+    for creature in Creature.objects.filter(current_level=level):
+        creature.move(character)
+        set_character(creature.x, creature.y, creature.type.symbol)
     return "".join(tiles)
 
 
 def generate_level(character: Character):
+    # Build the tiles
     level = Level(
         name="The Beginning",
         depth=1,
@@ -42,10 +49,23 @@ def generate_level(character: Character):
         character=character,
     )
     level.save()
+
+    # Add the character to this level
     character.current_level = level
     character.x = 5
     character.y = 5
     character.save()
+
+    # Create a creature
+    ctype = random.choice([c for c in CreatureType.objects.all()])
+    c = Creature(
+        current_level=level,
+        x=0, y=0,
+        type=ctype,
+        current_hp=ctype.base_hp
+    )
+    c.save()
+
     return level
 
 
@@ -65,6 +85,15 @@ def execute_move(character, command):
             "north": (0, -1),
             "south": (0, 1),
         }[direction_string]
+
+    if command[0] == "attack":
+        attack_string = command[1]
+        attack_string = {
+            "east": (1, 0),
+            "west": (-1, 0),
+            "north": (0, -1),
+            "south": (0, 1),
+        }
 
         # Update the character position
         character.x += direction[0]

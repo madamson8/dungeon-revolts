@@ -30,6 +30,14 @@ class CharacterViewSet(viewsets.ModelViewSet):
 
         return Response(data, status=200)
 
+    @detail_route(methods=["GET"])
+    def show(self, request, pk=None):
+        # Get some data
+        character = self.get_object()
+        # Return the new board state, and any messages
+        data = draw_board(character)
+        return Response(data, status=200)
+
 
 class LevelViewSet(viewsets.ModelViewSet):
     queryset = m.Level.objects.all()

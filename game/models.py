@@ -22,7 +22,8 @@ class Level(models.Model):
 
 class AbstractLocation(models.Model):
     current_level = models.ForeignKey(
-        'Level', related_name='+', blank=True, null=True, on_delete=models.SET_NULL)
+        'Level', related_name='+', blank=True, null=True,
+        on_delete=models.SET_NULL)
     x = models.PositiveSmallIntegerField()
     y = models.PositiveSmallIntegerField()
 
@@ -45,6 +46,9 @@ class Character(AbstractLocation):
 
     # Sin count
     sin_level = models.SmallIntegerField(default=0, blank=True, null=True)
+
+    # Base punch damage -> may be deleted later
+    punch_damage = 10
 
     def __str__(self):
         return "{} ({})".format(self.name, self.user)
@@ -70,6 +74,27 @@ class Creature(AbstractLocation):
         if self.current_level:
             char_name = self.current_level.character
         return "{} ({})".format(self.type, char_name)
+
+    def move(self, character):
+        diff_x = character.x - self.x
+        diff_y = character.y - self.y
+
+        if diff_x != 0:
+            if diff_x > 0:
+                self.x += 1
+            elif diff_x < 0:
+                self.x -= 1
+        else:
+            if diff_y != 0:
+                if diff_y > 0:
+                    self.y += 1
+                elif diff_x < 0:
+                    self.y -= 1
+
+        if character.x == self.x and character.y == self.y:
+            if self.type.base_hp < 0:
+                character.current_hp -= self.type.enemy_damage
+        self.save()
 
 
 class ItemType(models.Model):
@@ -100,4 +125,3 @@ class TileType(models.Model):
         if self.current_level:
             char_name = self.current_level.character
         return "{} {}".format(self.type, char_name)
-
