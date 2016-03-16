@@ -1,9 +1,17 @@
 function usersController(mainService){
-  this.test = mainService.getTest();
 
-  this.characters = mainService.getCharacters();
+  var vm = this;
 
-  console.log(this.characters);
+  vm.test = mainService.getTest();
+  // this.characters = [ {name: "Eric"}, {name: "other person"} ]
+
+  mainService.getCharacters().then(function(resp){
+    console.log(resp)
+    vm.characters = resp
+  })
+  // this.characters = mainService.getCharacters();
+
+  // console.log(this.characters);
 
 }
 

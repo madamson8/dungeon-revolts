@@ -1,3 +1,9 @@
 <h1>Are you an mvp or not?</h1>
 
 {{ UsersCtrl.test }}
+
+<div ng-repeat="character in UsersCtrl.characters">
+  <h2>{{ character.name }}</h2>
+  <p>HP: {{character.current_hp}} / {{character.base_hp}}</p>
+  <hr>
+</div>
