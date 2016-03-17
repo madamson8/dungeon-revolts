@@ -29,3 +29,15 @@ header {
     height: calc(100%-5px);
     float: left;
 }
+
+
+.game {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.vm.gameboard {
+  display: flex;
+  justify-content: center;
+}
