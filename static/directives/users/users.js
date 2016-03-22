@@ -2,11 +2,10 @@ function usersController(mainService){
 
   var vm = this;
 
-  vm.gameboard = "xhfdghfjhfhj";
+  vm.gameboard = "000ii00\n0mm0000\n0012300";
   vm.test = mainService.getTest();
 
   mainService.getCharacters().then(function(resp){
-    console.log(resp)
     vm.characters = resp
   })
 

@@ -10,17 +10,19 @@
         <div class="header-text">Dungeon Revolt</div>
     </header>
 
-    <users-directive></users-directive>
+    <div class="content">
+      <div class="characters">
+        <users-directive></users-directive>
+      </div>
 
-    <div class="main">
+      <pre class="gameboard">{{ UsersCtrl.gameboard }}</pre>
 
+
+      <div class="sidebar">
+          sidebar
+      </div>
     </div>
 
-    <div class="sidebar">
-
-    </div>
-
-    <div class="game">Here's some text.</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
     <script src="app.js"></script>

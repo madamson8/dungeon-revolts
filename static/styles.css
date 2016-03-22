@@ -2,6 +2,7 @@ html, body {
   height: 100%;
   width: 100%;
   margin: auto;
+  box-sizing: border-box;
 }
 
 header {
@@ -17,27 +18,23 @@ header {
     align-self: center;
 }
 
-.main {
-    width: 80%;
-    height: calc(100%-5px);
-    float: left;
+.content {
+  display: flex;
 }
 
+.characters {
+  flex: 0 0 25%;
+  height: 400px;
+}
+
+.gameboard {
+  flex: 0 0 50%;
+  height: 400px;
+  background-color: blue;
+}
 
 .sidebar {
-    width: 20%;
-    height: calc(100%-5px);
-    float: left;
-}
-
-
-.game {
-  display: flex;
-  justify-content: flex-end;
-}
-
-
-.vm.gameboard {
-  display: flex;
-  justify-content: center;
+    flex: 0 0 25%;
+    height: 400px;
+    background-color: yellow;
 }
