@@ -10,7 +10,12 @@ angular.module("dungeonRevolt")
       })
     }
 
-    this.getTest = function(){
-      return "Test from service is working."
+    this.getBoard = function(character) {
+      return $http({
+        method: "GET",
+        url: "/api/characters/" + character.id + "/show/"
+      }).then(function(response){
+        return response.data
+      })
     }
   })

@@ -15,7 +15,8 @@
         <users-directive></users-directive>
       </div>
 
-      <pre class="gameboard">{{ UsersCtrl.gameboard }}</pre>
+      <pre ng-if="UsersCtrl.activeCharacter" class="gameboard">{{ UsersCtrl.gameboard }}</pre>
+      <pre ng-if="!UsersCtrl.activeCharacter" class="gameboard">Please pick a character from the sidebar.</pre>
 
 
       <div class="sidebar">

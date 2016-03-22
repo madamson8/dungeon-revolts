@@ -2,11 +2,19 @@ function usersController(mainService){
 
   var vm = this;
 
-  vm.gameboard = "000ii00\n0mm0000\n0012300";
-  vm.test = mainService.getTest();
+  vm.gameboard = "";
+  vm.activeCharacter = undefined;
+
+  vm.pickCharacter = function (character) {
+    vm.activeCharacter = character;
+    // Load the board for the character
+    mainService.getBoard(vm.activeCharacter).then(function(resp){
+      vm.gameboard = resp;
+    });
+  }
 
   mainService.getCharacters().then(function(resp){
-    vm.characters = resp
+    vm.characters = resp;
   })
 
 }
