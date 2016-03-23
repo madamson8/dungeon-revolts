@@ -47,3 +47,11 @@ header {
   display: flex;
   justify-content: center;
 }
+.right-arrow {
+  display: flex;
+  justify-content: center;
+}
+.down-arrow {
+  display: flex;
+  justify-content: center;
+}
