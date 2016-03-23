@@ -3,6 +3,7 @@ html, body {
   width: 100%;
   margin: auto;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 header {
@@ -10,8 +11,8 @@ header {
   height: 50px;
   background-color: #1b4e5b;
   color: white;
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .header-text{
@@ -23,16 +24,29 @@ header {
   color: white;
 }
 
-.characters {
+.characters{
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+.character-header{
   flex: 0 0 25%;
   background-color: red;
+  height: 300px;
+}
+
+.character-profile{
+  margin-top:0;
+  margin-bottom:0;
+  flex: 0 0 25%;
+  background-color: blue;
   height: 400px;
 }
 
 .gameboard {
   font-size: 20px;
   font-family: Consolas, Lucida Console, Courier;
-  flex: 0 0 50%;
+  flex: 0 0 60%;
   margin: 0;
   height: 400px;
   background-color: black;
@@ -43,15 +57,42 @@ header {
     height: 400px;
     background-color: #b2b2b2;
 }
-.up-arrow {
-  display: flex;
-  justify-content: center;
+
+.arrows img{
+  width: 50px;
+  height: 50px
 }
-.right-arrow {
-  display: flex;
-  justify-content: center;
+
+.left-right{
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
 }
-.down-arrow {
+
+.up-arrow{
   display: flex;
   justify-content: center;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+
+
+.right-arrow{
+  justify-content: flex-end;
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+
+.left-arrow{
+  justify-content: flex-start;
+}
+
+.down-arrow{
+  display: flex;
+  justify-content: center;
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
 }

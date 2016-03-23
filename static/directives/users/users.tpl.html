@@ -1,10 +1,12 @@
-<h1>Are you an mvp or not?</h1>
+<!--What is the purpose of the character-header? Will further features be implemented to make a paid membership?-->
+<h1 class="character-header">Are you an mvp or not?</h1>
 
 {{ UsersCtrl.test }}
-
-<div ng-repeat="character in UsersCtrl.characters">
-  <h2>{{ character.name }}</h2>
-  <p>HP: {{character.current_hp}} / {{character.base_hp}}</p>
-  <button ng-click="UsersCtrl.pickCharacter(character)">Use this character</button>
-  <hr>
+  <div ng-if = "character.current_hp > 0" ng-repeat="character in UsersCtrl.characters">
+    <div class="character-profile">
+      <h2>{{ character.name }}</h2>
+      <p>HP: {{character.current_hp}} / {{character.base_hp}}</p>
+      <button ng-click="UsersCtrl.pickCharacter(character)">Use this character</button>
+      <hr>
+    </div>
 </div>
