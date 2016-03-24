@@ -18,4 +18,17 @@ angular.module("dungeonRevolt")
         return response.data
       })
     }
+
+    this.moveCharacter = function(character,direction){
+      return $http({
+        method:"POST",
+        url:"/api/characters/"+ character.id + "/move/",
+        data:{
+          "command":direction
+        }
+      }).then(function(response){
+        return response.data;
+      })
+    }
+
   })

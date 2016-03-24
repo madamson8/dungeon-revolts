@@ -71,6 +71,7 @@ header {
 
 .up-arrow{
   display: flex;
+  height: 50%;
   justify-content: center;
   -ms-transform: rotate(90deg); /* IE 9 */
   -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
@@ -91,7 +92,10 @@ header {
 
 .down-arrow{
   display: flex;
-  justify-content: center;
+  margin-left:auto;
+  margin-right: auto;
+  height: 50px;
+  width: 50px;
   -ms-transform: rotate(-90deg); /* IE 9 */
   -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
   transform: rotate(-90deg);

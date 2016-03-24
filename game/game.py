@@ -86,14 +86,14 @@ def execute_move(character, command):
             "south": (0, 1),
         }[direction_string]
 
-    if command[0] == "attack":
-        attack_string = command[1]
-        attack_string = {
-            "east": (1, 0),
-            "west": (-1, 0),
-            "north": (0, -1),
-            "south": (0, 1),
-        }
+    # if command[0] == "attack":
+    #     attack_string = command[1]
+    #     attack_string = {
+    #         "east": (1, 0),
+    #         "west": (-1, 0),
+    #         "north": (0, -1),
+    #         "south": (0, 1),
+    #     }
 
         # Update the character position
         character.x += direction[0]

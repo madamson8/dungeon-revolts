@@ -22,12 +22,12 @@
       <div class="sidebar">
           <!--TODO: allow for movement-->
           <div class="arrows">
-              <div class="up-arrow"><img src="./recources/arrow-button.png"/></div>
+              <div class="up-arrow"><img ng-click="UsersCtrl.move(character.id,'move north')" src="./recources/arrow-button.png"/></div>
               <div class="left-right">
-                <div class="left-arrow right-left"><img src="./recources/arrow-button.png"/></div>
-                <div class="right-arrow right-left"><img src="./recources/arrow-button.png"/></div>
+                <div class="left-arrow"><img ng-click="UsersCtrl.move(character.id,'move west')" src="./recources/arrow-button.png"/></div>
+                <div class="right-arrow"><img ng-click="UsersCtrl.move(character.id,'move east')" src="./recources/arrow-button.png"/></div>
               </div>
-              <div class="down-arrow"><img src="./recources/arrow-button.png"/></div>
+              <div class="down-arrow"><img ng-click="UsersCtrl.move(character.id,'move south')" src="./recources/arrow-button.png"/></div>
           </div>
           <!-- <div class="input"> TODO -->
       </div>
