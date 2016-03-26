@@ -2,9 +2,9 @@
 <html ng-app="dungeonRevolt">
   <head>
     <link rel="stylesheet" href="styles.css">
-    <title>My Site</title>
+    <title>Dungeon Revolt</title>
   </head>
-  <body>
+  <body ng-keydown="UsersCtrl.keydown($event.keyCode); window.focus()">
 
     <header>
         <div class="header-text">Dungeon Revolt</div>

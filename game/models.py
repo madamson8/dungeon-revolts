@@ -84,15 +84,14 @@ class Creature(AbstractLocation):
                 self.x += 1
             elif diff_x < 0:
                 self.x -= 1
-        else:
-            if diff_y != 0:
-                if diff_y > 0:
-                    self.y += 1
-                elif diff_x < 0:
-                    self.y -= 1
+        elif diff_y != 0:
+            if diff_y > 0:
+                self.y += 1
+            elif diff_y < 0:
+                self.y -= 1
 
         if character.x == self.x and character.y == self.y:
-            if self.type.base_hp < 0:
+            if self.type.base_hp > 0:
                 character.current_hp -= self.type.enemy_damage
         self.save()
 
